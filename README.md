@@ -7,6 +7,19 @@
 
 Golang Bitwarden API client auto-generated from Bitwarden OpenAPI Spec
 
+## Usage
+
+```bash
+go get -u arhat.dev/bitwardenapi
+```
+
+## Notice
+
+- Go file generation (`make gen.go`) requires manual fix:
+  - Generate them first
+  - Remove `const ( ... OAuth2 ... )` and unwanted imports
+  - Run `make lint.go`
+
 ## LICENSE
 
 ```txt
