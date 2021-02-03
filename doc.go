@@ -1,1 +1,1 @@
-package bitwardenapigo
+package bitwardenapi

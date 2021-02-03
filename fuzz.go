@@ -1,6 +1,6 @@
 // +build gofuzz
 
-package bitwardenapigo
+package bitwardenapi
 
 // import (
 // 	"bytes"

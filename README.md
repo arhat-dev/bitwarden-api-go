@@ -1,8 +1,8 @@
 # Bitwarden API Go
 
 [![CI](https://github.com/arhat-dev/bitwarden-api-go/workflows/CI/badge.svg)](https://github.com/arhat-dev/bitwarden-api-go/actions?query=workflow%3ACI)
-[![PkgGoDev](https://pkg.go.dev/badge/arhat.dev/bitwarden-api-go)](https://pkg.go.dev/arhat.dev/bitwarden-api-go)
-[![GoReportCard](https://goreportcard.com/badge/arhat.dev/bitwarden-api-go)](https://goreportcard.com/report/arhat.dev/bitwarden-api-go)
+[![PkgGoDev](https://pkg.go.dev/badge/arhat.dev/bitwardenapi)](https://pkg.go.dev/arhat.dev/bitwardenapi)
+[![GoReportCard](https://goreportcard.com/badge/arhat.dev/bitwardenapi)](https://goreportcard.com/report/arhat.dev/bitwardenapi)
 [![codecov](https://codecov.io/gh/arhat-dev/bitwarden-api-go/branch/master/graph/badge.svg)](https://codecov.io/gh/arhat-dev/bitwarden-api-go)
 
 Golang Bitwarden API client auto-generated from Bitwarden OpenAPI Spec

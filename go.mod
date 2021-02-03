@@ -1,4 +1,4 @@
-module arhat.dev/bitwarden-api-go
+module arhat.dev/bitwardenapi
 
 go 1.15
 

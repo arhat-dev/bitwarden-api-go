@@ -48,7 +48,7 @@ linters-settings:
   gocyclo:
     min-complexity: 30
   goimports:
-    local-prefixes: arhat.dev/bitwarden-api-go
+    local-prefixes: arhat.dev/bitwardenapi
   lll:
     line-length: 120
     # tab width in spaces. Default to 1.
