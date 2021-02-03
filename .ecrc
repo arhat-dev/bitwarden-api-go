@@ -5,7 +5,7 @@
   "SpacesAftertabs": false,
   "NoColor": false,
   "Exclude": [
-    ".git", ".vscode", ".idea"
+    ".git", ".vscode", ".idea", "openapi/.*.json"
   ],
   "AllowedContentTypes": [],
   "PassedFiles": [],

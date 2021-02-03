@@ -1,8 +1,7 @@
-# exclude: |
-#   (?x)^(
-#     file-regex-pattern-1|
-#     file-regex-pattern-2
-#   )$
+exclude: |
+  (?x)^(
+    openapi/.*\.json
+  )$
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
