@@ -1,1 +1,1 @@
-package templatelibrarygo
+package bitwardenapigo

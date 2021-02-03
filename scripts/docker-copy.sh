@@ -1,4 +1,6 @@
-# Copyright 2020 The arhat.dev Authors.
+#!/bin/sh
+
+# Copyright 2021 The arhat.dev Authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,10 +14,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-.PHONY: tidy
-tidy:
-	GOPROXY=direct GOSUMDB=off go mod tidy
+image="$1"
+src="$2"
+dest="$3"
 
-include scripts/test.mk
-include scripts/lint.mk
-include scripts/gen.mk
+ctr_id="$(docker create "${image}" :)"
+docker cp "${ctr_id}:${src}" "${dest}"
+docker rm -f "${ctr_id}"
