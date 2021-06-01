@@ -53,7 +53,7 @@ install_tools_go() {
   _download_go_pakage github.com/gogo/protobuf/proto
   _download_go_pakage github.com/gogo/protobuf/gogoproto
 
-  _install_go_bin "github.com/deepmap/oapi-codegen@v1.5.0" "./cmd/oapi-codegen" "${GOPATH}/bin/oapi-codegen"
+  _install_go_bin "github.com/deepmap/oapi-codegen@v1.7.0" "./cmd/oapi-codegen" "${GOPATH}/bin/oapi-codegen"
   cd -
 }
 
