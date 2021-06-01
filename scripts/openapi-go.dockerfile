@@ -1,4 +1,4 @@
-FROM golang:1.15 AS builder
+FROM golang:1.16 AS builder
 
 # install oapi-codegen
 COPY scripts/install.sh /install-tools.sh
@@ -13,7 +13,7 @@ RUN TARGETS="internal public" && \
       oapi-codegen \
         -package "bw${target}" \
         -o "/app/bw${target}/openapi.go" \
-        -generate types,client,skip-fmt \
+        -generate types,client \
         "/app/${target}.json" ; \
     done
 

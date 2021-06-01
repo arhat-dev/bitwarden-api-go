@@ -21,17 +21,18 @@ RUN git clone --depth 1 --branch ${BW_SRV_VER} \
 WORKDIR /app
 
 # build essential files
-# build.sh will fail due to lack of docker-cli, but we can just ignore it
 RUN dotnet tool restore && \
-    bash build.sh || true
+    dotnet restore "/app/src/Api/Api.csproj" && \
+    dotnet clean "/app/src/Api/Api.csproj" -c "Release" -o "/app/src/Api/obj/build-output/publish/Api" && \
+    dotnet publish "/app/src/Api/Api.csproj" -c "Release" -o "/app/src/Api/obj/build-output/publish/Api"
 
 # generate openapi json spec
 RUN TARGETS="internal public" && \
     for target in ${TARGETS}; do \
       dotnet swagger tofile \
-        --output ./${target}.json \
+        --output /app/${target}.json \
         --host https://api.bitwarden.com \
-        ./src/Api/obj/Docker/publish/Api/Api.dll ${target} ; \
+        /app/src/Api/obj/build-output/publish/Api/Api.dll ${target} ; \
     done
 
 FROM scratch

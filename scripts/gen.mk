@@ -12,7 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-BITWARDEN_SERVER_VERSION := v1.39.4
+# v1.41.3 seems broken
+BITWARDEN_SERVER_VERSION := master
 
 gen.spec:
 	docker build \
@@ -32,7 +33,6 @@ gen.spec:
 gen.go:
 	docker build \
 		-t bitwarden-openapi-go:${BITWARDEN_SERVER_VERSION} \
-		--build-arg SPEC_IMAGE=bitwarden-openapi-spec:${BITWARDEN_SERVER_VERSION} \
 		-f scripts/openapi-go.dockerfile .
 
 	rm -rf bwinternal bwpublic
@@ -42,3 +42,5 @@ gen.go:
 	sh scripts/docker-copy.sh \
 		bitwarden-openapi-go:${BITWARDEN_SERVER_VERSION} \
 		/bwpublic bwpublic
+	GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
+		go run ./scripts/fix-openapi-go.go

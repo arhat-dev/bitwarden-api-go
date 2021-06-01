@@ -3248,6 +3248,228 @@
         }
       }
     },
+    "/ciphers/{id}/attachment/v2": {
+      "post": {
+        "tags": [
+          "Ciphers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachmentRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachmentRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachmentRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AttachmentRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentUploadDataResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentUploadDataResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentUploadDataResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ciphers/{id}/attachment/{attachmentId}/renew": {
+      "get": {
+        "tags": [
+          "Ciphers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentUploadDataResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentUploadDataResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentUploadDataResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ciphers/{id}/attachment/{attachmentId}": {
+      "post": {
+        "tags": [
+          "Ciphers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Ciphers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Ciphers"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/ciphers/{id}/attachment": {
       "post": {
         "tags": [
@@ -3368,38 +3590,6 @@
         }
       }
     },
-    "/ciphers/{id}/attachment/{attachmentId}": {
-      "delete": {
-        "tags": [
-          "Ciphers"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          },
-          {
-            "name": "attachmentId",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "nullable": true
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success"
-          }
-        }
-      }
-    },
     "/ciphers/{id}/attachment/{attachmentId}/delete": {
       "post": {
         "tags": [
@@ -3488,6 +3678,18 @@
               "nullable": true
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/ciphers/attachment/validate/azure": {
+      "post": {
+        "tags": [
+          "Ciphers"
         ],
         "responses": {
           "200": {
@@ -4812,6 +5014,46 @@
         }
       }
     },
+    "/emergency-access/{id}/policies": {
+      "get": {
+        "tags": [
+          "EmergencyAccess"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyResponseModelListResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyResponseModelListResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PolicyResponseModelListResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/emergency-access/{id}/delete": {
       "post": {
         "tags": [
@@ -5177,6 +5419,64 @@
               "text/json": {
                 "schema": {
                   "$ref": "#/components/schemas/EmergencyAccessViewResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/emergency-access/{id}/{cipherId}/attachment/{attachmentId}": {
+      "get": {
+        "tags": [
+          "EmergencyAccess"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "cipherId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "attachmentId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AttachmentResponseModel"
                 }
               }
             }
@@ -7239,6 +7539,22 @@
               "type": "string",
               "nullable": true
             }
+          },
+          {
+            "name": "keys.PublicKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "keys.EncryptedPrivateKey",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
           }
         ],
         "requestBody": {
@@ -7950,6 +8266,108 @@
         }
       }
     },
+    "/organizations/{id}/keys": {
+      "get": {
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationKeysResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationKeysResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationKeysResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Organizations"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationKeysRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationKeysRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationKeysRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationKeysRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationKeysResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationKeysResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationKeysResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/organizations/{orgId}/users/{id}": {
       "get": {
         "tags": [
@@ -8175,6 +8593,68 @@
             }
           }
         }
+      },
+      "delete": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/organizations/{orgId}/users/{id}/groups": {
@@ -8343,6 +8823,55 @@
         }
       }
     },
+    "/organizations/{orgId}/users/{id}/reset-password-details": {
+      "get": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserResetPasswordDetailsResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserResetPasswordDetailsResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserResetPasswordDetailsResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/organizations/{orgId}/users/invite": {
       "post": {
         "tags": [
@@ -8386,6 +8915,70 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/organizations/{orgId}/users/reinvite": {
+      "post": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              }
+            }
           }
         }
       }
@@ -8534,6 +9127,246 @@
         }
       }
     },
+    "/organizations/{orgId}/users/confirm": {
+      "post": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkConfirmRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkConfirmRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkConfirmRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkConfirmRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{orgId}/users/public-keys": {
+      "post": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserPublicKeyResponseModelListResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserPublicKeyResponseModelListResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserPublicKeyResponseModelListResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/organizations/{orgId}/users/{userId}/reset-password-enrollment": {
+      "put": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "userId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordEnrollmentRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordEnrollmentRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordEnrollmentRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordEnrollmentRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/organizations/{orgId}/users/{id}/reset-password": {
+      "put": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserResetPasswordRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/organizations/{orgId}/users/{id}/delete": {
       "post": {
         "tags": [
@@ -8562,6 +9395,70 @@
         "responses": {
           "200": {
             "description": "Success"
+          }
+        }
+      }
+    },
+    "/organizations/{orgId}/users/delete": {
+      "post": {
+        "tags": [
+          "OrganizationUsers"
+        ],
+        "parameters": [
+          {
+            "name": "orgId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OrganizationUserBulkRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OrganizationUserBulkResponseModelListResponseModel"
+                }
+              }
+            }
           }
         }
       }
@@ -9062,6 +9959,62 @@
         }
       }
     },
+    "/sends/{encodedSendId}/access/file/{fileId}": {
+      "post": {
+        "tags": [
+          "Sends"
+        ],
+        "parameters": [
+          {
+            "name": "encodedSendId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendAccessRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendAccessRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendAccessRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendAccessRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
     "/sends/{id}": {
       "get": {
         "tags": [
@@ -9290,6 +10243,150 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/sends/file/v2": {
+      "post": {
+        "tags": [
+          "Sends"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendFileUploadDataResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendFileUploadDataResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendFileUploadDataResponseModel"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/sends/{id}/file/{fileId}": {
+      "get": {
+        "tags": [
+          "Sends"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendFileUploadDataResponseModel"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendFileUploadDataResponseModel"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendFileUploadDataResponseModel"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Sends"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          },
+          {
+            "name": "fileId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      }
+    },
+    "/sends/file/validate/azure": {
+      "post": {
+        "tags": [
+          "Sends"
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
           }
         }
       }
@@ -10244,7 +11341,7 @@
         }
       }
     },
-    "/two-factor/get-u2f": {
+    "/two-factor/get-webauthn": {
       "post": {
         "tags": [
           "TwoFactor"
@@ -10279,17 +11376,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               }
             }
@@ -10297,7 +11394,7 @@
         }
       }
     },
-    "/two-factor/get-u2f-challenge": {
+    "/two-factor/get-webauthn-challenge": {
       "post": {
         "tags": [
           "TwoFactor"
@@ -10332,17 +11429,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChallengeModel"
+                  "$ref": "#/components/schemas/CredentialCreateOptions"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChallengeModel"
+                  "$ref": "#/components/schemas/CredentialCreateOptions"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/ChallengeModel"
+                  "$ref": "#/components/schemas/CredentialCreateOptions"
                 }
               }
             }
@@ -10350,7 +11447,7 @@
         }
       }
     },
-    "/two-factor/u2f": {
+    "/two-factor/webauthn": {
       "put": {
         "tags": [
           "TwoFactor"
@@ -10359,22 +11456,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             }
           }
@@ -10385,17 +11482,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               }
             }
@@ -10410,22 +11507,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnRequestModel"
               }
             }
           }
@@ -10436,17 +11533,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               }
             }
@@ -10461,22 +11558,22 @@
           "content": {
             "application/json-patch+json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fDeleteRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnDeleteRequestModel"
               }
             },
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fDeleteRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnDeleteRequestModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fDeleteRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnDeleteRequestModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/TwoFactorU2fDeleteRequestModel"
+                "$ref": "#/components/schemas/TwoFactorWebAuthnDeleteRequestModel"
               }
             }
           }
@@ -10487,17 +11584,17 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/TwoFactorU2fResponseModel"
+                  "$ref": "#/components/schemas/TwoFactorWebAuthnResponseModel"
                 }
               }
             }
@@ -11103,7 +12200,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -11161,7 +12258,7 @@
             "nullable": true
           },
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -11219,7 +12316,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -11235,7 +12332,7 @@
         "type": "object",
         "properties": {
           "newEmail": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -11259,7 +12356,7 @@
         "type": "object",
         "properties": {
           "newEmail": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -11421,6 +12518,14 @@
         "type": "integer",
         "format": "int32"
       },
+      "CipherRepromptType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
       "FieldType": {
         "enum": [
           0,
@@ -11443,7 +12548,7 @@
             "nullable": true
           },
           "value": {
-            "maxLength": 1000,
+            "maxLength": 5000,
             "minLength": 0,
             "type": "string",
             "nullable": true
@@ -11552,6 +12657,10 @@
             "maxLength": 1000,
             "minLength": 0,
             "type": "string",
+            "nullable": true
+          },
+          "autofillOnPageLoad": {
+            "type": "boolean",
             "nullable": true
           }
         },
@@ -11756,6 +12865,9 @@
           "favorite": {
             "type": "boolean"
           },
+          "reprompt": {
+            "$ref": "#/components/schemas/CipherRepromptType"
+          },
           "name": {
             "maxLength": 1000,
             "minLength": 0,
@@ -11934,6 +13046,9 @@
           },
           "manageUsers": {
             "type": "boolean"
+          },
+          "manageResetPassword": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -11971,6 +13086,9 @@
             "type": "boolean"
           },
           "useApi": {
+            "type": "boolean"
+          },
+          "useResetPassword": {
             "type": "boolean"
           },
           "useBusinessPortal": {
@@ -12018,6 +13136,16 @@
           },
           "permissions": {
             "$ref": "#/components/schemas/Permissions"
+          },
+          "resetPasswordEnrolled": {
+            "type": "boolean"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "hasPublicAndPrivateKeys": {
+            "type": "boolean"
           },
           "object": {
             "type": "string",
@@ -12168,7 +13296,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -12820,6 +13948,9 @@
             "format": "date-time",
             "nullable": true
           },
+          "reprompt": {
+            "$ref": "#/components/schemas/CipherRepromptType"
+          },
           "object": {
             "type": "string",
             "nullable": true,
@@ -12849,6 +13980,9 @@
           },
           "favorite": {
             "type": "boolean"
+          },
+          "reprompt": {
+            "$ref": "#/components/schemas/CipherRepromptType"
           },
           "name": {
             "maxLength": 1000,
@@ -12982,6 +14116,9 @@
             "format": "date-time",
             "nullable": true
           },
+          "reprompt": {
+            "$ref": "#/components/schemas/CipherRepromptType"
+          },
           "object": {
             "type": "string",
             "nullable": true,
@@ -13082,6 +14219,9 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "reprompt": {
+            "$ref": "#/components/schemas/CipherRepromptType"
           },
           "object": {
             "type": "string",
@@ -13231,6 +14371,9 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          },
+          "reprompt": {
+            "$ref": "#/components/schemas/CipherRepromptType"
           },
           "object": {
             "type": "string",
@@ -13526,6 +14669,63 @@
         "properties": {
           "masterPasswordHash": {
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AttachmentRequestModel": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileName": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileSize": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "adminRequest": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileUploadType": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AttachmentUploadDataResponseModel": {
+        "type": "object",
+        "properties": {
+          "attachmentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileUploadType": {
+            "$ref": "#/components/schemas/FileUploadType"
+          },
+          "cipherResponse": {
+            "$ref": "#/components/schemas/CipherResponseModel"
+          },
+          "cipherMiniResponse": {
+            "$ref": "#/components/schemas/CipherMiniResponseModel"
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -13973,6 +15173,76 @@
         },
         "additionalProperties": false
       },
+      "PolicyType": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PolicyResponseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "nullable": true
+          },
+          "organizationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/PolicyType"
+          },
+          "data": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false
+            },
+            "nullable": true
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PolicyResponseModelListResponseModel": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PolicyResponseModel"
+            },
+            "nullable": true
+          },
+          "continuationToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "EmergencyAccessInviteRequestModel": {
         "required": [
           "email",
@@ -13982,7 +15252,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -14112,6 +15382,7 @@
           1114,
           1115,
           1116,
+          1117,
           1300,
           1301,
           1302,
@@ -14124,6 +15395,9 @@
           1503,
           1504,
           1505,
+          1506,
+          1507,
+          1508,
           1600,
           1601,
           1700
@@ -14412,7 +15686,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -14507,6 +15781,9 @@
             "type": "boolean"
           },
           "useApi": {
+            "type": "boolean"
+          },
+          "useResetPassword": {
             "type": "boolean"
           },
           "maxStorageGb": {
@@ -14718,6 +15995,9 @@
           "hasSso": {
             "type": "boolean"
           },
+          "hasResetPassword": {
+            "type": "boolean"
+          },
           "usersGetPremium": {
             "type": "boolean"
           },
@@ -14865,16 +16145,38 @@
           "useApi": {
             "type": "boolean"
           },
+          "useResetPassword": {
+            "type": "boolean"
+          },
           "usersGetPremium": {
             "type": "boolean"
           },
           "selfHost": {
             "type": "boolean"
           },
+          "hasPublicAndPrivateKeys": {
+            "type": "boolean"
+          },
           "object": {
             "type": "string",
             "nullable": true,
             "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationKeysRequestModel": {
+        "required": [
+          "encryptedPrivateKey",
+          "publicKey"
+        ],
+        "type": "object",
+        "properties": {
+          "publicKey": {
+            "type": "string"
+          },
+          "encryptedPrivateKey": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -14904,13 +16206,16 @@
             "nullable": true
           },
           "billingEmail": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
           },
           "permissions": {
             "$ref": "#/components/schemas/Permissions"
+          },
+          "keys": {
+            "$ref": "#/components/schemas/OrganizationKeysRequestModel"
           }
         },
         "additionalProperties": false
@@ -15035,10 +16340,16 @@
           "useApi": {
             "type": "boolean"
           },
+          "useResetPassword": {
+            "type": "boolean"
+          },
           "usersGetPremium": {
             "type": "boolean"
           },
           "selfHost": {
+            "type": "boolean"
+          },
+          "hasPublicAndPrivateKeys": {
             "type": "boolean"
           },
           "object": {
@@ -15069,7 +16380,7 @@
             "nullable": true
           },
           "billingEmail": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -15080,6 +16391,9 @@
           "key": {
             "type": "string"
           },
+          "keys": {
+            "$ref": "#/components/schemas/OrganizationKeysRequestModel"
+          },
           "paymentMethodType": {
             "$ref": "#/components/schemas/PaymentMethodType"
           },
@@ -15088,6 +16402,7 @@
             "nullable": true
           },
           "additionalSeats": {
+            "maximum": 2147483647,
             "minimum": 0,
             "type": "integer",
             "format": "int32"
@@ -15154,6 +16469,7 @@
             "$ref": "#/components/schemas/PlanType"
           },
           "additionalSeats": {
+            "maximum": 2147483647,
             "minimum": 0,
             "type": "integer",
             "format": "int32"
@@ -15175,6 +16491,9 @@
           "billingAddressPostalCode": {
             "type": "string",
             "nullable": true
+          },
+          "keys": {
+            "$ref": "#/components/schemas/OrganizationKeysRequestModel"
           }
         },
         "additionalProperties": false
@@ -15248,7 +16567,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email",
@@ -15283,6 +16602,9 @@
             "nullable": true
           },
           "overwriteExisting": {
+            "type": "boolean"
+          },
+          "largeImport": {
             "type": "boolean"
           }
         },
@@ -15324,6 +16646,25 @@
         },
         "additionalProperties": false
       },
+      "OrganizationKeysResponseModel": {
+        "type": "object",
+        "properties": {
+          "publicKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "privateKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OrganizationUserDetailsResponseModel": {
         "type": "object",
         "properties": {
@@ -15353,6 +16694,9 @@
           },
           "permissions": {
             "$ref": "#/components/schemas/Permissions"
+          },
+          "resetPasswordEnrolled": {
+            "type": "boolean"
           },
           "object": {
             "type": "string",
@@ -15424,6 +16768,9 @@
           "permissions": {
             "$ref": "#/components/schemas/Permissions"
           },
+          "resetPasswordEnrolled": {
+            "type": "boolean"
+          },
           "object": {
             "type": "string",
             "nullable": true,
@@ -15454,6 +16801,63 @@
         },
         "additionalProperties": false
       },
+      "OrganizationUserBulkRequestModel": {
+        "required": [
+          "ids"
+        ],
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserBulkResponseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "error": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserBulkResponseModelListResponseModel": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationUserBulkResponseModel"
+            },
+            "nullable": true
+          },
+          "continuationToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
       "OrganizationUserUpdateGroupsRequestModel": {
         "required": [
           "groupIds"
@@ -15465,6 +16869,32 @@
             "items": {
               "type": "string"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserResetPasswordDetailsResponseModel": {
+        "type": "object",
+        "properties": {
+          "kdf": {
+            "$ref": "#/components/schemas/KdfType"
+          },
+          "kdfIterations": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "resetPasswordKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "encryptedPrivateKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -15497,6 +16927,107 @@
               "$ref": "#/components/schemas/SelectionReadOnlyRequestModel"
             },
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserBulkConfirmRequestModelEntry": {
+        "required": [
+          "id",
+          "key"
+        ],
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "key": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserBulkConfirmRequestModel": {
+        "required": [
+          "keys"
+        ],
+        "type": "object",
+        "properties": {
+          "keys": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationUserBulkConfirmRequestModelEntry"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserPublicKeyResponseModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserPublicKeyResponseModelListResponseModel": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/OrganizationUserPublicKeyResponseModel"
+            },
+            "nullable": true
+          },
+          "continuationToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserResetPasswordEnrollmentRequestModel": {
+        "type": "object",
+        "properties": {
+          "resetPasswordKey": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "OrganizationUserResetPasswordRequestModel": {
+        "required": [
+          "key",
+          "newMasterPasswordHash"
+        ],
+        "type": "object",
+        "properties": {
+          "newMasterPasswordHash": {
+            "maxLength": 300,
+            "minLength": 0,
+            "type": "string"
+          },
+          "key": {
+            "type": "string"
           }
         },
         "additionalProperties": false
@@ -15576,51 +17107,6 @@
         },
         "additionalProperties": false
       },
-      "PolicyType": {
-        "enum": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5
-        ],
-        "type": "integer",
-        "format": "int32"
-      },
-      "PolicyResponseModel": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "organizationId": {
-            "type": "string",
-            "nullable": true
-          },
-          "type": {
-            "$ref": "#/components/schemas/PolicyType"
-          },
-          "data": {
-            "type": "object",
-            "additionalProperties": {
-              "type": "object",
-              "additionalProperties": false
-            },
-            "nullable": true
-          },
-          "enabled": {
-            "type": "boolean"
-          },
-          "object": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
-          }
-        },
-        "additionalProperties": false
-      },
       "PolicyRequestModel": {
         "required": [
           "enabled",
@@ -15641,28 +17127,6 @@
               "additionalProperties": false
             },
             "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "PolicyResponseModelListResponseModel": {
-        "type": "object",
-        "properties": {
-          "data": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/PolicyResponseModel"
-            },
-            "nullable": true
-          },
-          "continuationToken": {
-            "type": "string",
-            "nullable": true
-          },
-          "object": {
-            "type": "string",
-            "nullable": true,
-            "readOnly": true
           }
         },
         "additionalProperties": false
@@ -15727,7 +17191,10 @@
           8,
           9,
           10,
-          11
+          11,
+          12,
+          13,
+          14
         ],
         "type": "integer",
         "format": "int32"
@@ -15789,10 +17256,6 @@
         "type": "object",
         "properties": {
           "id": {
-            "type": "string",
-            "nullable": true
-          },
-          "url": {
             "type": "string",
             "nullable": true
           },
@@ -15889,6 +17352,9 @@
             "type": "string",
             "format": "date-time"
           },
+          "hideEmail": {
+            "type": "boolean"
+          },
           "object": {
             "type": "string",
             "nullable": true,
@@ -15907,6 +17373,11 @@
         "properties": {
           "type": {
             "$ref": "#/components/schemas/SendType"
+          },
+          "fileLength": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
           },
           "name": {
             "maxLength": 1000,
@@ -15955,6 +17426,10 @@
           },
           "disabled": {
             "type": "boolean"
+          },
+          "hideEmail": {
+            "type": "boolean",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -15972,6 +17447,27 @@
           "continuationToken": {
             "type": "string",
             "nullable": true
+          },
+          "object": {
+            "type": "string",
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SendFileUploadDataResponseModel": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "fileUploadType": {
+            "$ref": "#/components/schemas/FileUploadType"
+          },
+          "sendResponse": {
+            "$ref": "#/components/schemas/SendResponseModel"
           },
           "object": {
             "type": "string",
@@ -16066,7 +17562,9 @@
           80,
           81,
           82,
-          83
+          83,
+          84,
+          85
         ],
         "type": "integer",
         "format": "int32"
@@ -16201,7 +17699,8 @@
           3,
           4,
           5,
-          6
+          6,
+          7
         ],
         "type": "integer",
         "format": "int32"
@@ -16439,13 +17938,13 @@
             "type": "integer",
             "format": "int32"
           },
-          "compromised": {
+          "migrated": {
             "type": "boolean"
           }
         },
         "additionalProperties": false
       },
-      "TwoFactorU2fResponseModel": {
+      "TwoFactorWebAuthnResponseModel": {
         "type": "object",
         "properties": {
           "enabled": {
@@ -16466,29 +17965,401 @@
         },
         "additionalProperties": false
       },
-      "ChallengeModel": {
+      "PublicKeyCredentialRpEntity": {
         "type": "object",
         "properties": {
-          "userId": {
+          "id": {
             "type": "string",
             "nullable": true
           },
-          "appId": {
+          "name": {
             "type": "string",
             "nullable": true
           },
-          "challenge": {
-            "type": "string",
-            "nullable": true
-          },
-          "version": {
+          "icon": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "TwoFactorU2fRequestModel": {
+      "Fido2User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "id": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "displayName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PublicKeyCredentialType": {
+        "enum": [
+          0
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PubKeyCredParam": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PublicKeyCredentialType"
+          },
+          "alg": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AttestationConveyancePreference": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AuthenticatorAttachment": {
+        "enum": [
+          0,
+          1
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "UserVerificationRequirement": {
+        "enum": [
+          0,
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "AuthenticatorSelection": {
+        "type": "object",
+        "properties": {
+          "authenticatorAttachment": {
+            "$ref": "#/components/schemas/AuthenticatorAttachment"
+          },
+          "requireResidentKey": {
+            "type": "boolean"
+          },
+          "userVerification": {
+            "$ref": "#/components/schemas/UserVerificationRequirement"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticatorTransport": {
+        "enum": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "PublicKeyCredentialDescriptor": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "$ref": "#/components/schemas/PublicKeyCredentialType"
+          },
+          "id": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "transports": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/AuthenticatorTransport"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TxAuthGenericArg": {
+        "type": "object",
+        "properties": {
+          "contentType": {
+            "type": "string",
+            "nullable": true
+          },
+          "content": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticatorBiometricPerfBounds": {
+        "type": "object",
+        "properties": {
+          "far": {
+            "type": "number",
+            "format": "float"
+          },
+          "frr": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticationExtensionsClientInputs": {
+        "type": "object",
+        "properties": {
+          "example": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "appID": {
+            "type": "string",
+            "nullable": true
+          },
+          "simpleTransactionAuthorization": {
+            "type": "string",
+            "nullable": true
+          },
+          "genericTransactionAuthorization": {
+            "$ref": "#/components/schemas/TxAuthGenericArg"
+          },
+          "authenticatorSelection": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "byte"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "userVerificationIndex": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "location": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "userVerificationMethod": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "biometricAuthenticatorPerformanceBounds": {
+            "$ref": "#/components/schemas/AuthenticatorBiometricPerfBounds"
+          }
+        },
+        "additionalProperties": false
+      },
+      "CredentialCreateOptions": {
+        "type": "object",
+        "properties": {
+          "rp": {
+            "$ref": "#/components/schemas/PublicKeyCredentialRpEntity"
+          },
+          "user": {
+            "$ref": "#/components/schemas/Fido2User"
+          },
+          "challenge": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "pubKeyCredParams": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PubKeyCredParam"
+            },
+            "nullable": true
+          },
+          "timeout": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "attestation": {
+            "$ref": "#/components/schemas/AttestationConveyancePreference"
+          },
+          "authenticatorSelection": {
+            "$ref": "#/components/schemas/AuthenticatorSelection"
+          },
+          "excludeCredentials": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PublicKeyCredentialDescriptor"
+            },
+            "nullable": true
+          },
+          "extensions": {
+            "$ref": "#/components/schemas/AuthenticationExtensionsClientInputs"
+          },
+          "status": {
+            "type": "string",
+            "nullable": true
+          },
+          "errorMessage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseData": {
+        "type": "object",
+        "properties": {
+          "attestationObject": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "clientDataJson": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GeoCoordinate": {
+        "type": "object",
+        "properties": {
+          "latitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "longitude": {
+            "type": "number",
+            "format": "double"
+          },
+          "horizontalAccuracy": {
+            "type": "number",
+            "format": "double"
+          },
+          "verticalAccuracy": {
+            "type": "number",
+            "format": "double"
+          },
+          "speed": {
+            "type": "number",
+            "format": "double"
+          },
+          "course": {
+            "type": "number",
+            "format": "double"
+          },
+          "isUnknown": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "altitude": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticationExtensionsClientOutputs": {
+        "type": "object",
+        "properties": {
+          "example": {
+            "type": "object",
+            "additionalProperties": false,
+            "nullable": true
+          },
+          "appID": {
+            "type": "boolean"
+          },
+          "simpleTransactionAuthorization": {
+            "type": "string",
+            "nullable": true
+          },
+          "genericTransactionAuthorization": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "authenticatorSelection": {
+            "type": "boolean"
+          },
+          "extensions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "userVerificationIndex": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "location": {
+            "$ref": "#/components/schemas/GeoCoordinate"
+          },
+          "userVerificationMethod": {
+            "type": "array",
+            "items": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64"
+              }
+            },
+            "nullable": true
+          },
+          "biometricAuthenticatorPerformanceBounds": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthenticatorAttestationRawResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "rawId": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "type": {
+            "$ref": "#/components/schemas/PublicKeyCredentialType"
+          },
+          "response": {
+            "$ref": "#/components/schemas/ResponseData"
+          },
+          "extensions": {
+            "$ref": "#/components/schemas/AuthenticationExtensionsClientOutputs"
+          }
+        },
+        "additionalProperties": false
+      },
+      "TwoFactorWebAuthnRequestModel": {
         "required": [
           "deviceResponse",
           "id",
@@ -16497,7 +18368,7 @@
         "type": "object",
         "properties": {
           "deviceResponse": {
-            "type": "string"
+            "$ref": "#/components/schemas/AuthenticatorAttestationRawResponse"
           },
           "name": {
             "type": "string",
@@ -16513,7 +18384,7 @@
         },
         "additionalProperties": false
       },
-      "TwoFactorU2fDeleteRequestModel": {
+      "TwoFactorWebAuthnDeleteRequestModel": {
         "required": [
           "id",
           "masterPasswordHash"
@@ -16556,7 +18427,7 @@
         "type": "object",
         "properties": {
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -16581,7 +18452,7 @@
             "type": "string"
           },
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
@@ -16637,7 +18508,7 @@
             "type": "string"
           },
           "email": {
-            "maxLength": 50,
+            "maxLength": 256,
             "minLength": 0,
             "type": "string",
             "format": "email"
