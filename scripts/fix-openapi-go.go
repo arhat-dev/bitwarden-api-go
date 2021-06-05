@@ -19,8 +19,6 @@ func main() {
 			panic(err)
 		}
 
-		println(len(exp.FindAllIndex(data, len(data)+1)))
-
 		lastIdxInData := 0
 		for _, loc := range exp.FindAllIndex(data, len(data)+1) {
 			result = append(result, data[lastIdxInData:loc[0]]...)

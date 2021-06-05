@@ -15,6 +15,12 @@
 # v1.41.3 seems broken
 BITWARDEN_SERVER_VERSION := master
 
+COPY_SPEC := sh scripts/docker-copy.sh \
+	bitwarden-openapi-spec:${BITWARDEN_SERVER_VERSION}
+
+COPY_GO := sh scripts/docker-copy.sh \
+	bitwarden-openapi-go:${BITWARDEN_SERVER_VERSION}
+
 gen.spec:
 	docker build \
 		-t bitwarden-openapi-spec:${BITWARDEN_SERVER_VERSION} \
@@ -23,12 +29,9 @@ gen.spec:
 
 	mkdir -p openapi
 	rm -rf openapi/*.json
-	sh scripts/docker-copy.sh \
-		bitwarden-openapi-spec:${BITWARDEN_SERVER_VERSION} \
-		/internal.json openapi/internal.json
-	sh scripts/docker-copy.sh \
-		bitwarden-openapi-spec:${BITWARDEN_SERVER_VERSION} \
-		/public.json openapi/public.json
+
+	${COPY_SPEC} /Api.internal.json openapi/api.internal.json
+	${COPY_SPEC} /Api.public.json openapi/api.public.json
 
 gen.go:
 	docker build \
@@ -36,11 +39,9 @@ gen.go:
 		-f scripts/openapi-go.dockerfile .
 
 	rm -rf bwinternal bwpublic
-	sh scripts/docker-copy.sh \
-		bitwarden-openapi-go:${BITWARDEN_SERVER_VERSION} \
-		/bwinternal bwinternal
-	sh scripts/docker-copy.sh \
-		bitwarden-openapi-go:${BITWARDEN_SERVER_VERSION} \
-		/bwpublic bwpublic
+
+	${COPY_GO} /bwinternal bwinternal
+	${COPY_GO} /bwpublic bwpublic
+
 	GOOS=$(shell go env GOHOSTOS) GOARCH=$(shell go env GOHOSTARCH) \
 		go run ./scripts/fix-openapi-go.go

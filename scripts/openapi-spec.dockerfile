@@ -20,22 +20,9 @@ RUN git clone --depth 1 --branch ${BW_SRV_VER} \
 
 WORKDIR /app
 
-# build essential files
-RUN dotnet tool restore && \
-    dotnet restore "/app/src/Api/Api.csproj" && \
-    dotnet clean "/app/src/Api/Api.csproj" -c "Release" -o "/app/src/Api/obj/build-output/publish/Api" && \
-    dotnet publish "/app/src/Api/Api.csproj" -c "Release" -o "/app/src/Api/obj/build-output/publish/Api"
-
-# generate openapi json spec
-RUN TARGETS="internal public" && \
-    for target in ${TARGETS}; do \
-      dotnet swagger tofile \
-        --output /app/${target}.json \
-        --host https://api.bitwarden.com \
-        /app/src/Api/obj/build-output/publish/Api/Api.dll ${target} ; \
-    done
+COPY scripts/dotnet-gen.sh /dotnet-gen.sh
+RUN sh /dotnet-gen.sh
 
 FROM scratch
 
-COPY --from=generator /app/internal.json /
-COPY --from=generator /app/public.json /
+COPY --from=generator /output /
